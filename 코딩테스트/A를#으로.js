@@ -1,6 +1,5 @@
 function solutions() {
-    let answer = 'BANANA';
-    answer = answer.replace(/A/g, '#');
-    return answer;
+    let answer = 'COMPUTERPROGRAMMING';
+    let result = answer.split('');
 }
 console.log(solutions());
