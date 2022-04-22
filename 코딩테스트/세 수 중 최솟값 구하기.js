@@ -1,4 +1,5 @@
 function solutions(a, b, c) {
+    // answer = Math.min(a, b, c);
     let answer;
     if (a < b) {
         answer = a;
@@ -10,4 +11,4 @@ function solutions(a, b, c) {
     }
     return answer;
 }
-console.log(solutions(1, 5, 7));
+console.log(solutions(32, 5, 7));
