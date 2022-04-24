@@ -1,5 +1,5 @@
 function solutions() {
-    let answer = '';
+    let answer = 'study';
     let final_result = '';
     if (answer.length % 2 !== 0) {
         let result = Math.floor(answer.length / 2);
