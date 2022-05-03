@@ -1,11 +1,11 @@
-function solution(s) {
+function solution(str) {
     let answer = '';
     let cnt = 1;
-    s = s + ' ';
-    for (let i = 0; i < s.length - 1; i++) {
-        if (s[i] === s[i + 1]) cnt++;
+    str = str + ' ';
+    for (let i = 0; i < str.length - 1; i++) {
+        if (str[i] === str[i + 1]) cnt++;
         else {
-            answer += s[i];
+            answer += str[i];
             if (cnt > 1) answer += String(cnt);
             cnt = 1;
         }
