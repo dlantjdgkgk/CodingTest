@@ -1,5 +1,11 @@
-function solutions() {
-    let answer = 'COMPUTERPROGRAMMING';
-    let result = answer.split('');
+function solution(s) {
+    let answer = '';
+    for (let x of s) {
+        if (x == 'A') answer += '#';
+        else answer += x;
+    }
+    return answer;
 }
-console.log(solutions());
+
+let str = 'BANANA';
+console.log(solution(str));
