@@ -10,17 +10,16 @@ function solutions(arr) {
             sumRow += arr[i][j];
             sumColumn += arr[j][i];
         }
-        total = Math.max(sumRow, sumColumn);
+        total = Math.max(total, sumRow, sumColumn);
     }
-    sumRow = 0;
-    sumColumn = 0;
     for (let i = 0; i < arr.length; i++) {
         left += arr[i][i];
         right += arr[i][arr.length - i - 1];
+        total = Math.max(total, left, right);
     }
-    total = Math.max(left, right);
     return total;
 }
+
 let arr = [
     [10, 13, 10, 12, 15],
     [12, 39, 30, 23, 11],

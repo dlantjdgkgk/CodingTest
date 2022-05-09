@@ -5,5 +5,5 @@ function solutions(arr) {
         console.log('YES');
     } else console.log('NO');
 }
-let arr = 'gooOG';
+let arr = 'abcba';
 console.log(solutions(arr));

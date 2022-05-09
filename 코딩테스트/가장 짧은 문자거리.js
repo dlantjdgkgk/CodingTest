@@ -1,6 +1,6 @@
 function solution(s, t) {
     let answer = [];
-    let p = 1;
+    let p = 0;
     for (let x of s) {
         if (x === t) {
             p = 0;
