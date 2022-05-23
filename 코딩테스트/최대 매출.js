@@ -1,15 +1,15 @@
-// function solution(arr) {
-//     let answer = 0;
-//     let max = Number.MIN_SAFE_INTEGER;
-//     for (let i = 0; i < arr.length; i++) {
-//         max = arr[i] + arr[i + 1] + arr[i + 2];
-//         if (max > 0) answer = Math.max(answer, max);
-//     }
-//     return answer;
-// }
+function solution(arr) {
+    let answer = 0;
+    let max = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < arr.length - 2; i++) {
+        max = arr[i] + arr[i + 1] + arr[i + 2];
+        answer = Math.max(answer, max);
+    }
+    return answer;
+}
 
-// let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-// console.log(solution(arr));
+let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr));
 
 function solution(arr, k) {
     let answer = 0;
@@ -21,5 +21,5 @@ function solution(arr, k) {
     }
     return answer;
 }
-let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-console.log(solution(arr, 3));
+let arr2 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr2, 3));
