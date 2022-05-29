@@ -8,9 +8,9 @@ function solutions(str) {
             let rt = stack.pop();
             let lt = stack.pop();
             if (x === '+') stack.push(lt + rt);
-            else if (x === '-') stack.push(lt - rt);
-            else if (x === '*') stack.push(lt * rt);
-            else if (x === '/') stack.push(lt / rt);
+            if (x === '-') stack.push(lt - rt);
+            if (x === '*') stack.push(lt * rt);
+            if (x === '/') stack.push(lt / rt);
         }
     }
     answer = stack[0];
