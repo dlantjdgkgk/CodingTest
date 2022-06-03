@@ -1,11 +1,5 @@
-function solutions() {
-    let answer = 'COMPUTERPROGRAMMING';
-    let sum = 0;
-    for (x of answer) {
-        if (x === 'A') {
-            sum++;
-        }
-    }
-    return sum;
+function solutions(n, s) {
+    return n.split(s).length - 1;
 }
-console.log(solutions());
+
+console.log(solutions('COMPUTERPROGRAMMING', 'R'));
