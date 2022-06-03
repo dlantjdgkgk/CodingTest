@@ -1,0 +1,24 @@
+{
+    "name": "codingtest",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon 코딩테스트/test.js"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/dlantjdgkgk/CodingTest.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/dlantjdgkgk/CodingTest/issues"
+    },
+    "homepage": "https://github.com/dlantjdgkgk/CodingTest#readme",
+    "dependencies": {
+        "nodemon": "^2.0.16"
+    }
+}
