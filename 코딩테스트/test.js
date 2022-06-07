@@ -1,15 +1,16 @@
-function solution(s) {
+function solution(m, arr) {
     let answer = 0;
-    let stack = [];
-    for (let i = 0; i < s.length; i++) {
-        if (s[i] === '(') stack.push('(');
-        else {
-            stack.pop();
-            if (s[i - 1] === '(') answer += stack.length;
-            else answer++;
+    let lt = 0;
+    let sum = 0;
+    for (let rt = 0; rt < arr.length; rt++) {
+        sum = sum + arr[rt];
+        while (sum > m) {
+            sum = sum - arr[lt++];
         }
+        if (sum === m) answer++;
     }
     return answer;
 }
-let a = '()(((()())(())()))(())';
-console.log(solution(a));
+
+let a = [1, 2, 1, 3, 1, 1, 1, 2];
+console.log(solution(5, a));
