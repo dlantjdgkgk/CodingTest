@@ -9,3 +9,10 @@ function solutions() {
     return result;
 }
 console.log(solutions());
+
+//2번째 풀었을 때
+const solutions = (arr) => {
+    return new Set(arr);
+};
+let arr = 'ksekkset';
+console.log(solutions(arr));

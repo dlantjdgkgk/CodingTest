@@ -1,11 +1,5 @@
-function solution(s) {
-    let answer = '';
-    for (let x of s) {
-        if (x == 'A') answer += '#';
-        else answer += x;
-    }
-    return answer;
-}
-
-let str = 'BANANA';
-console.log(solution(str));
+const solutions = (arr) => {
+    return arr.replace(/A/g, '#');
+};
+let arr = 'BANANA';
+console.log(solutions(arr));
