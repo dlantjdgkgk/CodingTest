@@ -1,18 +1,14 @@
-function solutions(a, b, c) {
-    let answer;
-    let total = a + b + c;
-    if (a < b) {
-        answer = b;
-    } else {
-        answer = a;
+const solutions = (array) => {
+    let answer = 'YES';
+    let max = 0;
+    let sum = array.reduce((a, b) => a + b, 0);
+    for (let x of array) {
+        if (max < x) {
+            max = x;
+        }
     }
-    if (c > answer) {
-        answer = c;
-    }
-    if (total - answer > answer) {
-        console.log('yes');
-    } else {
-        console.log('no');
-    }
-}
-console.log(solutions(6, 7, 12));
+    if (sum - max > max) return answer;
+    else return 'NO';
+};
+let array = [6, 7, 15];
+console.log(solutions(array));

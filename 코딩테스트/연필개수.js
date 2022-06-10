@@ -1,4 +1,5 @@
-function solutions(a) {
-    return Math.ceil(a / 12);
-}
-console.log(solutions(50));
+const solutions = (students) => {
+    return Math.ceil(students / 12);
+};
+let students = 178;
+console.log(solutions(students));
