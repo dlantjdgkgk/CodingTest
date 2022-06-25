@@ -1,27 +1,22 @@
-function solution(m, product) {
-    let answer = 0;
-    let n = product.length;
-    product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
-    for (let i = 0; i < n; i++) {
-        let money = m - (product[i][0] / 2 + product[i][1]);
-        let cnt = 1;
-        for (let j = 0; j < n; j++) {
-            if (j !== i && product[j][0] + product[j][1] > money) break;
-            if (j !== i && product[j][0] + product[j][1] <= money) {
-                money -= product[j][0] + product[j][1];
-                cnt++;
-            }
+function solution(str) {
+    let answer;
+    let sH = new Map();
+    let max = Number.MIN_SAFE_INTEGER;
+    for (let x of str) {
+        if (sH.has(x)) {
+            sH.set(x, sH.get(x) + 1);
+        } else {
+            sH.set(x, 1);
         }
-        answer = Math.max(answer, cnt);
+    }
+    for (let [key, value] of sH) {
+        if (value > max) {
+            max = value;
+            answer = key;
+        }
     }
     return answer;
 }
 
-let arr = [
-    [6, 6],
-    [2, 2],
-    [4, 3],
-    [4, 5],
-    [10, 3],
-];
-console.log(solution(28, arr));
+let str = 'BACBACCACCBDEDE';
+console.log(solution(str));
