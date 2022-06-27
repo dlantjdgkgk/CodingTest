@@ -1,22 +1,25 @@
-function solution(str) {
-    let answer;
-    let sH = new Map();
+function solution(arr) {
+    let answer = 0;
     let max = Number.MIN_SAFE_INTEGER;
-    for (let x of str) {
-        if (sH.has(x)) {
-            sH.set(x, sH.get(x) + 1);
-        } else {
-            sH.set(x, 1);
-        }
-    }
-    for (let [key, value] of sH) {
-        if (value > max) {
-            max = value;
-            answer = key;
-        }
+    for (let i = 0; i < arr.length - 2; i++) {
+        max = arr[i] + arr[i + 1] + arr[i + 2];
+        answer = Math.max(answer, max);
     }
     return answer;
 }
 
-let str = 'BACBACCACCBDEDE';
-console.log(solution(str));
+let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr));
+
+function solution(arr, k) {
+    let answer = 0;
+    let sum = 0;
+    for (let i = 0; i < k; i++) sum += arr[i];
+    for (let i = k; i < arr.length; i++) {
+        sum += arr[i] - arr[i - k];
+        answer = Math.max(answer, sum);
+    }
+    return answer;
+}
+let arr2 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr2, 3));
