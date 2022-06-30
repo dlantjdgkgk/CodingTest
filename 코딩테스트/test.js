@@ -1,14 +1,21 @@
-function solution() {
-    let a = [2, 3, 3, 1, 3];
-    let b = [1, 1, 2, 2, 3];
-    let answer = '';
-    for (let i = 0; i < a.length; i++) {
-        if (a[i] === b[i]) answer += 'D';
-        else if (a[i] === 1 && b[i] === 3) answer += 'A ';
-        else if (a[i] === 2 && b[i] === 1) answer += 'A ';
-        else if (a[i] === 3 && b[i] === 2) answer += 'A ';
-        else answer += 'B ';
+function solutions(arr) {
+    let max = Number.MIN_SAFE_INTEGER;
+    let sum = 0;
+    let answer;
+    for (let x of arr) {
+        let sum = x
+            .toString()
+            .split('')
+            .reduce((a, b) => a + Number(b), 0);
+        if (sum > max) {
+            max = sum;
+            answer = x;
+        } else if (sum === max) {
+            if (x > answer) answer = x;
+        }
     }
     return answer;
 }
-console.log(solution());
+
+let arr = [128, 460, 603, 40, 146, 521, 137, 123];
+console.log(solutions(arr));
