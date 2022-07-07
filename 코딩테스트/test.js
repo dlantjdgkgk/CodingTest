@@ -1,24 +1,24 @@
-function solution(arr) {
-    let answer = 0;
-    arr.sort((a, b) => {
-        if (a[1] === b[1]) return a[0] - b[0];
-        else return a[1] - b[1];
-    });
-    let et = 0;
-    for (let x of arr) {
-        if (x[0] >= et) {
-            answer++;
-            et = x[1];
+function solution(s, t) {
+    let answer = [];
+    let p = 0;
+    for (let x of s) {
+        if (x === t) {
+            p = 0;
+            answer.push(p);
+        } else {
+            p++;
+            answer.push(p);
+        }
+    }
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (s[i] === t) p = 0;
+        else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
         }
     }
     return answer;
 }
 
-let arr = [
-    [1, 4],
-    [2, 3],
-    [3, 5],
-    [4, 6],
-    [5, 7],
-];
-console.log(solution(arr));
+let str = 'teachermade';
+console.log(solution(str, 'e'));
