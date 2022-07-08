@@ -1,24 +1,14 @@
-function solution(s, t) {
-    let answer = [];
-    let p = 0;
-    for (let x of s) {
-        if (x === t) {
-            p = 0;
-            answer.push(p);
-        } else {
-            p++;
-            answer.push(p);
+function solution(arr) {
+    let answer = [...arr];
+    answer.sort((a, b) => a - b);
+    let result = [];
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] !== answer[i]) {
+            result.push(i + 1);
         }
     }
-    for (let i = s.length - 1; i >= 0; i--) {
-        if (s[i] === t) p = 0;
-        else {
-            p++;
-            answer[i] = Math.min(answer[i], p);
-        }
-    }
-    return answer;
+    return result;
 }
 
-let str = 'teachermade';
-console.log(solution(str, 'e'));
+let arr = [120, 125, 152, 130, 135, 135, 143, 127, 160];
+console.log(solution(arr));
