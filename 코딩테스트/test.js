@@ -1,14 +1,14 @@
 function solution(arr) {
-    let answer = [...arr];
-    answer.sort((a, b) => a - b);
-    let result = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] !== answer[i]) {
-            result.push(i + 1);
+    let answer = arr;
+    for (let i = 0; i < arr.length - 1; i++) {
+        for (let j = 0; j < arr.length - i - 1; j++) {
+            if (arr[j] > arr[j + 1]) {
+                [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+            }
         }
     }
-    return result;
+    return answer;
 }
 
-let arr = [120, 125, 152, 130, 135, 135, 143, 127, 160];
+let arr = [13, 5, 11, 7, 23, 15];
 console.log(solution(arr));
