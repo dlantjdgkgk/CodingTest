@@ -1,21 +1,13 @@
-function solutions(arr) {
-    let max = Number.MIN_SAFE_INTEGER;
-    let sum = 0;
-    let answer;
-    for (let x of arr) {
-        let sum = x
-            .toString()
-            .split('')
-            .reduce((a, b) => a + Number(b), 0);
-        if (sum > max) {
-            max = sum;
-            answer = x;
-        } else if (sum === max) {
-            if (x > answer) answer = x;
+function solution() {
+    let arr = [130, 135, 148, 140, 145, 150, 150, 153];
+    let result = 0;
+    let max = 0;
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] > max) {
+            max = arr[i];
+            result++;
         }
     }
-    return answer;
+    return result;
 }
-
-let arr = [128, 460, 603, 40, 146, 521, 137, 123];
-console.log(solutions(arr));
+console.log(solution());
