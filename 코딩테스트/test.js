@@ -1,13 +1,15 @@
-function solution() {
-    let arr = [130, 135, 148, 140, 145, 150, 150, 153];
-    let result = 0;
-    let max = 0;
-    for (let i = 0; i < arr.length; i++) {
-        if (arr[i] > max) {
-            max = arr[i];
-            result++;
+function solution(need, plan) {
+    let answer = 'YES';
+    let queue = need.split('');
+    for (let x of plan) {
+        if (queue.includes(x)) {
+            if (x !== queue.shift()) return 'NO';
         }
     }
-    return result;
+    if (queue.length > 0) return 'NO';
+    return answer;
 }
-console.log(solution());
+
+let a = 'CBA';
+let b = 'CBDAGE';
+console.log(solution(a, b));
