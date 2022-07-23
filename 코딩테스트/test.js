@@ -1,17 +1,18 @@
-function solution(array) {
-    let answer = 'YES';
-    let stack = [];
-    for (let x of array) {
-        if (x === '(') {
-            stack.push(x);
-        } else {
-            if (stack.length === 0) return 'No';
-            stack.pop();
+function solutions() {
+    let answer = 'assssdwasd';
+    let result = '';
+    for (let x of answer) {
+        if (result.indexOf(x) === -1) {
+            result = result + x;
         }
     }
-    if (stack.length > 0) return 'No';
-    return answer;
+    return result;
 }
+console.log(solutions());
 
-let a = '()()';
-console.log(solution(a));
+//2번째 풀었을 때
+const solutions = (arr) => {
+    return new Set(arr);
+};
+let arr = 'ksekkset';
+console.log(solutions(arr));
