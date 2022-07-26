@@ -1,18 +1,21 @@
-function solution(str1, str2) {
-    let answer = 'YES';
-    let sH = new Map();
-    for (let x of str1) {
-        if (sH.has(x)) sH.set(x, sH.get(x) + 1);
-        else sH.set(x, 1);
-    }
-    for (let x of str2) {
-        if (!sH.has(x) || sH.get(x) === 0) return 'NO';
-        sH.set(x, sH.get(x) - 1);
+function solutions(arr) {
+    let max = Number.MIN_SAFE_INTEGER;
+    let sum = 0;
+    let answer;
+    for (let x of arr) {
+        let sum = x
+            .toString()
+            .split('')
+            .reduce((a, b) => a + Number(b), 0);
+        if (sum > max) {
+            max = sum;
+            answer = x;
+        } else if (sum === max) {
+            if (x > answer) answer = x;
+        }
     }
     return answer;
 }
 
-
-let a = 'AbaAeCe';
-let b = 'baeeACA';
-console.log(solution(a, b));
+let arr = [128, 460, 603, 40, 146, 521, 137, 123];
+console.log(solutions(arr));
