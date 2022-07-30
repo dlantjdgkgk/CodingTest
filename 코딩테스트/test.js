@@ -1,9 +1,17 @@
-function solutions(arr) {
-    let result = arr.toLowerCase();
-    let answer = result.split('').reverse().join('');
-    if (result === answer) {
-        console.log('YES');
-    } else console.log('NO');
+function solution(str) {
+    let answer = '';
+    let cnt = 1;
+    str = str + ' ';
+    for (let i = 0; i < str.length - 1; i++) {
+        if (str[i] === str[i + 1]) cnt++;
+        else {
+            answer += str[i];
+            if (cnt > 1) answer += String(cnt);
+            cnt = 1;
+        }
+    }
+    return answer;
 }
-let arr = 'abcba';
-console.log(solutions(arr));
+
+let str = 'KKHSSSSSSSE';
+console.log(solution(str));
