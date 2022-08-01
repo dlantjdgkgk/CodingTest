@@ -1,13 +1,24 @@
-function solutions() {
-    let answer = 'StudY';
-    let result = '';
-    for (let x of answer) {
-        if (x === x.toUpperCase()) {
-            result += x.toLowerCase();
+function solution(s, t) {
+    let answer = [];
+    let p = 0;
+    for (let x of s) {
+        if (x === t) {
+            p = 0;
+            answer.push(p);
         } else {
-            result += x.toUpperCase();
+            p++;
+            answer.push(p);
         }
     }
-    return result;
+    for (let i = s.length - 1; i >= 0; i--) {
+        if (s[i] === t) p = 0;
+        else {
+            p++;
+            answer[i] = Math.min(answer[i], p);
+        }
+    }
+    return answer;
 }
-console.log(solutions());
+
+let str = 'teachermade';
+console.log(solution(str, 'e'));
