@@ -1,36 +1,35 @@
-function solutions(arrOne, arrTwo) {
-    let arr = [];
-    let answer = [];
-    for (let i = 0; i < arrOne.length; i++) {
-        for (let j = 0; j < arrTwo.length; j++) {
-            if (arrOne[i] === arrTwo[j]) arr.push(arrTwo[j]);
-        }
+function compareMaps(map1, map2) {
+    if (map1.size !== map2.size) return false;
+    for (let [key, val] of map1) {
+        if (!map2.has(key) || map2.get(key) !== val) return false;
     }
-    answer = arr.sort((a, b) => a - b);
+    return true;
+}
+function solution(s, t) {
+    let answer = 0;
+    let tH = new Map();
+    let sH = new Map();
+    for (let x of t) {
+        if (tH.has(x)) tH.set(x, tH.get(x) + 1);
+        else tH.set(x, 1);
+    }
+    let len = t.length - 1;
+    for (let i = 0; i < len; i++) {
+        if (sH.has(s[i])) sH.set(s[i], sH.get(s[i]) + 1);
+        else sH.set(s[i], 1);
+    }
+    let lt = 0;
+    for (let rt = len; rt < s.length; rt++) {
+        if (sH.has(s[rt])) sH.set(s[rt], sH.get(s[rt]) + 1);
+        else sH.set(s[rt], 1);
+        if (compareMaps(sH, tH)) answer++;
+        sH.set(s[lt], sH.get(s[lt]) - 1);
+        if (sH.get(s[lt]) === 0) sH.delete(s[lt]);
+        lt++;
+    }
     return answer;
 }
-let arrOne = [1, 3, 5, 9, 2];
-let arrTwo = [3, 2, 5, 7, 8];
-console.log(solutions(arrOne, arrTwo));
-// 시간 복잡도 O(nm)
-// 이렇게 구현하였을 때 시간 복잡도가 오래 걸리는지..?
 
-function solution(arr1, arr2) {
-    let answer = [];
-    arr1.sort((a, b) => a - b);
-    arr2.sort((a, b) => a - b);
-    let p1 = (p2 = 0);
-    while (p1 < arr1.length && p2 < arr2.length) {
-        if (arr1[p1] == arr2[p2]) {
-            answer.push(arr1[p1++]);
-            p2++;
-        } else if (arr1[p1] < arr2[p2]) p1++;
-        else p2++;
-    }
-    return answer;
-}
-
-let a = [1, 3, 9, 5, 2]; // 1,2,3,5,9
-let b = [3, 2, 5, 7, 8]; // 2,3,5,7,8
+let a = 'bacaAacba';
+let b = 'abc';
 console.log(solution(a, b));
-// 시간 복잡도 O(n+m)
