@@ -8,7 +8,7 @@ function solutions() {
             min.push(arr[i]);
         }
     }
-    console.log(sum); // 홀수들의 합
-    console.log(Math.min(...min)); // ,홀수중 최솟값
+    console.log(sum);
+    console.log(Math.min(...min));
 }
 solutions();
