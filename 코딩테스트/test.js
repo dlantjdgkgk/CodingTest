@@ -1,22 +1,25 @@
-function solution(n) {
+function solution(arr) {
     let answer = 0;
-    const arr = new Array(n + 1).fill(true);
-
-    for (let i = 2; i <= n; ++i) {
-        // 이미 소수가 아닌 인덱스는 건너뛴다.
-        if (arr[i] === false) {
-            continue;
-        }
-        // 배수는 소수가 아니라 0으로 설정
-        for (let k = i * 2; k <= n; k += i) {
-            arr[k] = false;
-        }
-    }
-    // 소수의 갯수를 구한다.
-    for (let i = 2; i <= n; ++i) {
-        if (arr[i] === true) {
-            answer++;
-        }
+    let max = Number.MIN_SAFE_INTEGER;
+    for (let i = 0; i < arr.length - 2; i++) {
+        max = arr[i] + arr[i + 1] + arr[i + 2];
+        answer = Math.max(answer, max);
     }
     return answer;
 }
+
+let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr));
+
+function solution(arr, k) {
+    let answer = 0;
+    let sum = 0;
+    for (let i = 0; i < k; i++) sum += arr[i];
+    for (let i = k; i < arr.length; i++) {
+        sum += arr[i] - arr[i - k];
+        answer = Math.max(answer, sum);
+    }
+    return answer;
+}
+let arr2 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
+console.log(solution(arr2, 3));
