@@ -1,25 +1,27 @@
-function solution(arr) {
+function solution(m, product) {
     let answer = 0;
-    let max = Number.MIN_SAFE_INTEGER;
-    for (let i = 0; i < arr.length - 2; i++) {
-        max = arr[i] + arr[i + 1] + arr[i + 2];
-        answer = Math.max(answer, max);
+    let n = product.length;
+    product.sort((a, b) => a[0] + a[1] - (b[0] + b[1]));
+    for (let i = 0; i < n; i++) {
+        let money = m - (product[i][0] / 2 + product[i][1]);
+        let cnt = 1;
+        for (let j = 0; j < n; j++) {
+            if (j !== i && product[j][0] + product[j][1] > money) break;
+            if (j !== i && product[j][0] + product[j][1] <= money) {
+                money -= product[j][0] + product[j][1];
+                cnt++;
+            }
+        }
+        answer = Math.max(answer, cnt);
     }
     return answer;
 }
 
-let arr = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-console.log(solution(arr));
-
-function solution(arr, k) {
-    let answer = 0;
-    let sum = 0;
-    for (let i = 0; i < k; i++) sum += arr[i];
-    for (let i = k; i < arr.length; i++) {
-        sum += arr[i] - arr[i - k];
-        answer = Math.max(answer, sum);
-    }
-    return answer;
-}
-let arr2 = [12, 15, 11, 20, 25, 10, 20, 19, 13, 15];
-console.log(solution(arr2, 3));
+let arr = [
+    [6, 6],
+    [2, 2],
+    [4, 3],
+    [4, 5],
+    [10, 3],
+];
+console.log(solution(28, arr));
