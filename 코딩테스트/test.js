@@ -1,9 +1,12 @@
-function solutions(arr) {
-    let result = arr.toLowerCase().replace(/[^a-z]/g, '');
-    let answer = result.split('').reverse().join('');
-    if (result === answer) {
-        console.log('YES');
-    } else console.log('NO');
+function solution(participant, completion) {
+    let answer = '';
+    participant.sort();
+    completion.sort();
+
+    for (let i = 0; i < participant.length; i++) {
+        if (participant[i] !== completion[i]) {
+            answer = answer + participant[i];
+            return answer;
+        }
+    }
 }
-let arr = 'found7, time: study; Yduts; emit, 7Dnuof';
-console.log(solutions(arr));
