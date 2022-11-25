@@ -1,17 +1,14 @@
-function solution(array) {
-    let answer = 'yes';
-    let stack = [];
-    for (let x of array) {
-        if (x === '(') {
-            stack.push(x);
-        } else {
-            if (stack.length === 0) return 'no';
-            stack.pop();
+function solution(numbers) {
+    let result = [];
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = 1; j < numbers.length; j++) {
+            result.push(numbers[i] + numbers[j]);
+            if (i === j) {
+                result.pop(numbers[i] + numbers[j]);
+            }
         }
     }
-    if (stack.length > 0) return 'no';
-    return answer;
+    let final_result = new Set(result);
+    const res = [...final_result];
+    return res.sort((a, b) => a - b);
 }
-
-let a = '()()';
-console.log(solution(a));
