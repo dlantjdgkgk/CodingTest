@@ -1,14 +1,20 @@
-function solution(numbers) {
-    let result = [];
-    for (let i = 0; i < numbers.length; i++) {
-        for (let j = 1; j < numbers.length; j++) {
-            result.push(numbers[i] + numbers[j]);
-            if (i === j) {
-                result.pop(numbers[i] + numbers[j]);
-            }
+function solutions(str) {
+    let answer;
+    let stack = [];
+    for (let x of str) {
+        if (!isNaN(x)) {
+            stack.push(Number(x));
+        } else {
+            let rt = stack.pop();
+            let lt = stack.pop();
+            if (x === '+') stack.push(lt + rt);
+            if (x === '-') stack.push(lt - rt);
+            if (x === '*') stack.push(lt * rt);
+            if (x === '/') stack.push(lt / rt);
         }
     }
-    let final_result = new Set(result);
-    const res = [...final_result];
-    return res.sort((a, b) => a - b);
+    answer = stack[0];
+    return answer;
 }
+let str = '352+*9-';
+console.log(solutions(str));
